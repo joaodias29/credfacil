@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Crédito · CredFácil</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/analise.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <a href="index.html" class="logo">
+      <i class="fas fa-bolt"></i> CredFácil
+    </a>
+    <nav class="nav-links">
+      <a href="index.html"         class="nav-link">Home</a>
+      <a href="analise.html"       class="nav-link active">Simulador</a>
+      <a href="como-funciona.html" class="nav-link">Como funciona</a>
+      <a href="contato.html"       class="nav-link">Contato</a>
+    </nav>
+    <a href="index.html" class="btn-nav-ghost">
+      <i class="fas fa-arrow-left" style="font-size:0.8rem"></i> Voltar
+    </a>
+  </header>
+
+  <!-- ===== CABEÇALHO DA PÁGINA ===== -->
+  <section class="page-header">
+    <div class="badge-label badge-purple">
+      <i class="fas fa-shield-alt"></i> Análise segura · 5 C's do Crédito
+    </div>
+    <h1>Simulador de <span class="grad">Crédito</span></h1>
+    <p>Preencha os dados abaixo e receba sua análise instantânea baseada na metodologia dos 5 C's</p>
+  </section>
+
+  <!-- ===== ÁREA DE SIMULAÇÃO ===== -->
+  <section class="sim-grid">
+
+    <!-- Formulário -->
+    <div class="card">
+      <div class="card-title">
+        <span class="card-icon card-icon-orange"><i class="fas fa-user"></i></span>
+        Dados para análise
+      </div>
+
+      <!-- Abas PF / PJ -->
+      <div class="step-tabs">
+        <button class="step-tab active" id="tabPF" onclick="setTipo('pf')">
+          <i class="fas fa-user"></i> Pessoa Física
+        </button>
+        <button class="step-tab" id="tabPJ" onclick="setTipo('pj')">
+          <i class="fas fa-building"></i> Pessoa Jurídica
+        </button>
+      </div>
+
+      <form id="creditForm" onsubmit="handleSubmit(event)">
+
+        <!-- Dados pessoais -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" class="form-control"
+              placeholder="Ex: Maria Silva" required>
+          </div>
+          <div class="form-group">
+            <label for="cpf" id="docLabel">CPF</label>
+            <input type="text" id="cpf" class="form-control"
+              placeholder="000.000.000-00" maxlength="14" required>
+          </div>
+        </div>
+
+        <!-- Campos exclusivos PJ -->
+        <div id="pjExtra" style="display:none">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cnpj">CNPJ</label>
+              <input type="text" id="cnpj" class="form-control"
+                placeholder="00.000.000/0000-00" maxlength="18">
+            </div>
+            <div class="form-group">
+              <label for="tempoAtividade">Tempo de atividade</label>
+              <select id="tempoAtividade" class="form-control">
+                <option value="3">Mais de 3 anos</option>
+                <option value="2">1 a 3 anos</option>
+                <option value="1">6 meses a 1 ano</option>
+                <option value="0">Menos de 6 meses</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider: renda / faturamento -->
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label" id="rendaLabel">Renda mensal</span>
+            <span class="slider-value" id="rendaDisplay">R$ 5.000,00</span>
+          </div>
+          <input type="range" class="slider" id="rendaSlider"
+            min="500" max="50000" step="500" value="5000"
+            oninput="atualizarSlider(this,'rendaDisplay','renda')">
+          <input type="hidden" id="renda" value="5000">
+        </div>
+
+        <!-- Slider: dívidas mensais -->
+        <div class="slider-group">
+          <div class="slider-header">
+            <span class="slider-label">Dívidas mensais atuais</span>
+            <span class="slider-value" id="dividasDisplay">R$ 0,00</span>
+          </div>
+          <input type="range" class="slider" id="dividasSlider"
+            min="0" max="20000" step="200" value="0"
+            oninput="atualizarSlider(this,'dividasDisplay','dividas')">
+          <input type="hidden" id="dividas" value="0">
+        </div>
+
+        <!-- Checklist dos 5 C's -->
+        <div class="form-group">
+          <label>Informações adicionais (5 C's)</label>
+        </div>
+        <div class="cs-checks">
+          <label class="c-check" id="check-carater">
+            <input type="checkbox" id="semRestrição"
+              onchange="toggleCheck(this,'check-carater')">
+            <span class="c-check-box"><i class="fas fa-check"></i></span>
+            <span class="c-check-label">
+              <strong>Caráter · Sem restrições</strong>
+              Sem pendências no SPC/Serasa ou protestos
+            </span>
+          </label>
+          <label class="c-check" id="check-capital">
+            <input type="checkbox" id="temPatrimonio"
+              onchange="toggleCheck(this,'check-capital')">
+            <span class="c-check-box"><i class="fas fa-check"></i></span>
+            <span class="c-check-label">
+              <strong>Capital · Possui patrimônio</strong>
+              Imóvel, veículo ou investimentos
+            </span>
+          </label>
+          <label class="c-check" id="check-colateral">
+            <input type="checkbox" id="temGarantia"
+              onchange="toggleCheck(this,'check-colateral')">
+            <span class="c-check-box"><i class="fas fa-check"></i></span>
+            <span class="c-check-label">
+              <strong>Colateral · Oferece garantia</strong>
+              Bem disponível como garantia para o crédito
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnSubmit">
+          <i class="fas fa-calculator"></i> Analisar crédito agora
+        </button>
+        <button type="button" class="btn-reset" onclick="resetForm()">
+          <i class="fas fa-undo" style="margin-right:6px;font-size:0.8rem"></i>
+          Limpar formulário
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Resultado -->
+    <div class="card" id="resultCard">
+      <div class="card-title">
+        <span class="card-icon card-icon-purple"><i class="fas fa-chart-pie"></i></span>
+        Resultado da análise
+      </div>
+      <div id="resultContent">
+        <div class="result-empty">
+          <div class="empty-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+          <p>Preencha o formulário ao lado para ver seu score de crédito</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== METODOLOGIA DOS 5 C's ===== -->
+  <section class="five-cs-section">
+    <h2 class="five-cs-heading">Metodologia dos <span class="grad">5 C's</span></h2>
+    <p class="five-cs-sub">Critérios utilizados pela CredFácil para avaliação completa de risco</p>
+
+    <div class="five-cs-grid">
+      <div class="c-card">
+        <div class="c-num">C1</div>
+        <div class="c-name">Caráter</div>
+        <div class="c-desc">Histórico de pagamentos, protestos e cadastros de inadimplentes</div>
+      </div>
+      <div class="c-card">
+        <div class="c-num">C2</div>
+        <div class="c-name">Capacidade</div>
+        <div class="c-desc">Renda mensal, estabilidade e comprometimento financeiro</div>
+      </div>
+      <div class="c-card">
+        <div class="c-num">C3</div>
+        <div class="c-name">Capital</div>
+        <div class="c-desc">Patrimônio líquido, bens, investimentos e reservas</div>
+      </div>
+      <div class="c-card">
+        <div class="c-num">C4</div>
+        <div class="c-name">Condições</div>
+        <div class="c-desc">Cenário econômico, taxas de juros e perspectivas setoriais</div>
+      </div>
+      <div class="c-card">
+        <div class="c-num">C5</div>
+        <div class="c-name">Colateral</div>
+        <div class="c-desc">Garantias oferecidas: imóveis, veículos ou investimentos</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <i class="fas fa-bolt" style="color:var(--orange)"></i> CredFácil
+      </div>
+      <div class="footer-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Privacidade</a>
+        <a href="#">LGPD</a>
+      </div>
+      <div class="footer-copy">© 2026 CredFácil · Análise de crédito inteligente</div>
+    </div>
+  </footer>
+
+</div><!-- /container -->
+
+<!-- VLibras (acessibilidade) -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<!-- Scripts (ordem importa: utils → scoring → analise) -->
+<script src="js/utils.js"></script>
+<script src="js/scoring.js"></script>
+<script src="js/analise.js"></script>
+
+</body>
+</html>

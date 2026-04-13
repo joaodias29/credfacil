@@ -1,0 +1,103 @@
+/* ============================================================
+   CREDFÁCIL — VARIABLES & RESET
+   Tokens de design compartilhados por todas as páginas
+   ============================================================ */
+
+:root {
+  /* Cores principais */
+  --purple:        #6C2BFF;
+  --purple-mid:    #9B5CFF;
+  --purple-soft:   rgba(108, 43, 255, 0.12);
+  --orange:        #FF7E2B;
+  --orange-soft:   rgba(255, 126, 43, 0.10);
+
+  /* Fundos */
+  --bg:            #080810;
+  --bg2:           #0E0B1A;
+  --surface:       rgba(255, 255, 255, 0.035);
+
+  /* Bordas */
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-active: rgba(108, 43, 255, 0.40);
+
+  /* Texto */
+  --text:          #F0EEF8;
+  --text-dim:      #C4BEDD;
+  --text-muted:    #8A8499;
+
+  /* Feedback */
+  --success:       #00D68F;
+  --warning:       #F5C842;
+  --danger:        #FF4D6A;
+
+  /* Bordas arredondadas */
+  --radius-sm:     12px;
+  --radius:        20px;
+  --radius-lg:     28px;
+  --radius-xl:     40px;
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== TIPOGRAFIA ===== */
+h1, h2, h3, h4 {
+  font-family: 'Syne', sans-serif;
+  letter-spacing: normal;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.grad {
+  background: linear-gradient(120deg, #9B5CFF 0%, #FF7E2B 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== ANIMAÇÕES GLOBAIS ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes growBar {
+  from { transform: scaleY(0); transform-origin: bottom; }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}

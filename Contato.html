@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato · CredFácil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/contato.css">
+</head>
+<body>
+<div class="container">
+
+  <header class="navbar">
+    <a href="index.html" class="logo"><i class="fas fa-bolt"></i> CredFácil</a>
+    <nav class="nav-links">
+      <a href="index.html"         class="nav-link">Home</a>
+      <a href="analise.html"       class="nav-link">Simulador</a>
+      <a href="como-funciona.html" class="nav-link">Como funciona</a>
+      <a href="contato.html"       class="nav-link active">Contato</a>
+    </nav>
+    <a href="analise.html" class="btn-nav"><i class="fas fa-chart-line"></i> Simular agora</a>
+  </header>
+
+  <section class="page-header">
+    <div class="badge-label badge-orange"><i class="fas fa-envelope"></i> Fale conosco</div>
+    <h1>Entre em <span class="grad">contato</span></h1>
+    <p>Nossa equipe está pronta para ajudar com dúvidas sobre crédito, a plataforma ou parcerias.</p>
+  </section>
+
+  <div class="contact-grid">
+
+    <!-- Canais de contato -->
+    <div>
+      <div class="channels">
+
+        <a href="mailto:contato@credfacil.com.br" class="channel-card">
+          <div class="channel-icon ch-purple"><i class="fas fa-envelope"></i></div>
+          <div class="channel-info">
+            <div class="channel-label">E-mail</div>
+            <div class="channel-value">contato@credfacil.com.br</div>
+            <div class="channel-sub">Respondemos em até 24h</div>
+          </div>
+        </a>
+
+        <a href="tel:+551140028922" class="channel-card">
+          <div class="channel-icon ch-orange"><i class="fas fa-phone"></i></div>
+          <div class="channel-info">
+            <div class="channel-label">Telefone</div>
+            <div class="channel-value">(11) 4002-8922</div>
+            <div class="channel-sub">Seg–Sex, das 9h às 18h</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/5511999999999" target="_blank" class="channel-card">
+          <div class="channel-icon ch-green"><i class="fab fa-whatsapp"></i></div>
+          <div class="channel-info">
+            <div class="channel-label">WhatsApp</div>
+            <div class="channel-value">(11) 9 9999-9999</div>
+            <div class="channel-sub">Atendimento rápido</div>
+          </div>
+        </a>
+
+      </div>
+
+      <div style="height:18px"></div>
+
+      <div class="hours-card">
+        <div class="hours-title"><i class="fas fa-clock" style="margin-right:6px"></i>Horário de atendimento</div>
+        <div class="hours-row"><span class="day">Segunda a Sexta</span><span class="hours">09h – 18h</span></div>
+        <div class="hours-row"><span class="day">Sábado</span><span class="hours">09h – 13h</span></div>
+        <div class="hours-row"><span class="day">Domingo e feriados</span><span class="hours">Fechado</span></div>
+      </div>
+    </div>
+
+    <!-- Formulário -->
+    <div class="contact-form-card">
+      <div class="card-title">
+        <span class="card-icon card-icon-purple"><i class="fas fa-paper-plane"></i></span>
+        Envie uma mensagem
+      </div>
+
+      <form id="contactForm">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ctNome">Nome completo *</label>
+            <input type="text" id="ctNome" class="form-control" placeholder="Ex: João Silva" required>
+          </div>
+          <div class="form-group">
+            <label for="ctEmail">E-mail *</label>
+            <input type="email" id="ctEmail" class="form-control" placeholder="seu@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ctTelefone">Telefone</label>
+            <input type="text" id="ctTelefone" class="form-control" placeholder="(11) 9 9999-9999" maxlength="16">
+          </div>
+          <div class="form-group">
+            <label for="ctAssunto">Assunto *</label>
+            <div class="select-wrap">
+              <select id="ctAssunto" class="form-control" required>
+                <option value="">Selecione um assunto</option>
+                <option value="duvida-credito">Dúvida sobre crédito</option>
+                <option value="duvida-plataforma">Dúvida sobre a plataforma</option>
+                <option value="parceria">Parceria comercial</option>
+                <option value="suporte">Suporte técnico</option>
+                <option value="lgpd">LGPD / Privacidade</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ctMensagem">Mensagem *</label>
+          <textarea id="ctMensagem" class="form-control" placeholder="Descreva sua dúvida ou solicitação..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="btnEnviar">
+          <i class="fas fa-paper-plane"></i> Enviar mensagem
+        </button>
+
+        <div class="form-feedback" id="formFeedback">
+          <i class="fas fa-check-circle"></i>
+          Mensagem enviada com sucesso! Retornaremos em até 24h.
+        </div>
+
+      </form>
+    </div>
+
+  </div><!-- /contact-grid -->
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="badge-label badge-purple"><i class="fas fa-question-circle"></i> Perguntas frequentes</div>
+    <h2 class="section-title">Dúvidas <span class="grad">comuns</span></h2>
+    <p class="section-sub">Respostas rápidas para as perguntas mais frequentes dos nossos clientes.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>O simulador de crédito é gratuito?</span>
+          <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <p>Sim, o uso do simulador de crédito da CredFácil é totalmente gratuito e sem compromisso. Você pode simular quantas vezes quiser para entender seu perfil de crédito antes de solicitar oficialmente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Meus dados estão seguros na plataforma?</span>
+          <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <p>Absolutamente. A CredFácil utiliza criptografia de ponta a ponta e está em total conformidade com a LGPD (Lei Geral de Proteção de Dados). Seus dados são usados exclusivamente para a análise de crédito e nunca são compartilhados com terceiros sem sua autorização.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>A consulta afeta meu score no Serasa?</span>
+          <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <p>O simulador interno da CredFácil não realiza consultas diretas nos bureaus de crédito, portanto não impacta seu score externo. Em uma solicitação oficial de crédito, pode haver consulta formal, o que é informado previamente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Como funciona a metodologia dos 5 C's?</span>
+          <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <p>Os 5 C's do Crédito são: Caráter (histórico de pagamentos), Capacidade (renda e comprometimento), Capital (patrimônio), Condições (cenário econômico) e Colateral (garantias). Cada critério recebe uma pontuação que compõe o score final de 0 a 1000 pontos.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Quanto tempo leva para ter o resultado?</span>
+          <div class="faq-toggle"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="faq-answer">
+          <p>O resultado do simulador é instantâneo, em menos de 5 segundos após o envio dos dados. Em uma solicitação oficial, o prazo pode variar conforme a alçada de aprovação definida pelo nível de risco calculado.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo"><i class="fas fa-bolt" style="color:var(--orange)"></i> CredFácil</div>
+      <div class="footer-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Privacidade</a>
+        <a href="#">LGPD</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-copy">© 2026 CredFácil · Análise de crédito inteligente</div>
+    </div>
+  </footer>
+
+</div>
+<script src="js/utils.js"></script>
+<script src="js/contato.js"></script>
+</body>
+</html>
