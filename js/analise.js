@@ -136,6 +136,12 @@ function handleSubmit(e) {
     renda,
     dividas,
     tipo: currentTipo,
+
+    vinculoEmpregaticio: document.getElementById('vinculoEmpregaticio')?.value || 'clt',
+    tempoEmprego: parseInt(document.getElementById('tempoEmprego')?.value || '3'),
+    dependentes: parseInt(document.getElementById('dependentes')?.value || '0'),
+    clienteCredFacil: document.getElementById('clienteCredFacil')?.checked || false,
+    
     tempoAtividade: parseInt(document.getElementById('tempoAtividade')?.value ?? '0'),
     semRestricao:   document.getElementById('semRestrição').checked,
     temPatrimonio:  document.getElementById('temPatrimonio').checked,
