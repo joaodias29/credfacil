@@ -1,34 +1,44 @@
 /* ============================================================
-   CREDFÁCIL — VARIABLES & RESET
+   CREDFÁCIL — VARIABLES & RESET (TEMA STONE CLARO + ORGÂNICO)
    Tokens de design compartilhados por todas as páginas
    ============================================================ */
 
 :root {
   /* Cores principais */
-  --purple:        #6C2BFF;
-  --purple-mid:    #9B5CFF;
-  --purple-soft:   rgba(108, 43, 255, 0.12);
-  --orange:        #FF7E2B;
-  --orange-soft:   rgba(255, 126, 43, 0.10);
+  --purple:        #5B1FB0;      /* Roxo mais escuro para melhor contraste */
+  --purple-mid:    #7B3FD0;
+  --purple-light:  #9B6BDF;
+  --purple-soft:   rgba(91, 31, 176, 0.15);
+  --orange:        #E86B1A;      /* Laranja mais vibrante */
+  --orange-soft:   rgba(232, 107, 26, 0.12);
+  --orange-dark:   #C55A15;
 
-  /* Fundos */
-  --bg:            #080810;
-  --bg2:           #0E0B1A;
-  --surface:       rgba(255, 255, 255, 0.035);
+  /* Fundos - Tema Stone Claro */
+  --bg:            #EBE7E2;
+  --bg2:           #E0DBD5;
+  --surface:       rgba(255, 255, 255, 0.70);
+  --surface-dark:  rgba(255, 255, 255, 0.85);
 
   /* Bordas */
-  --border:        rgba(255, 255, 255, 0.07);
-  --border-active: rgba(108, 43, 255, 0.40);
+  --border:        rgba(91, 31, 176, 0.15);
+  --border-active: rgba(91, 31, 176, 0.40);
 
-  /* Texto */
-  --text:          #F0EEF8;
-  --text-dim:      #C4BEDD;
-  --text-muted:    #8A8499;
+  /* Texto - ALTO CONTRASTE */
+  --text:          #15101E;      /* Quase preto - máxima legibilidade */
+  --text-dim:      #3A2E4A;      /* Roxo escuro legível */
+  --text-muted:    #5E5070;      /* Roxo acinzentado */
+  --text-light:    #7A6B8A;      /* Para placeholders */
 
   /* Feedback */
-  --success:       #00D68F;
-  --warning:       #F5C842;
-  --danger:        #FF4D6A;
+  --success:       #007A4D;
+  --success-light: #00A86B;
+  --warning:       #B8860B;
+  --warning-light: #D4A810;
+  --danger:        #C62828;
+  --danger-light:  #E53935;
+
+  /* Gradientes para textos */
+  --grad-text:     linear-gradient(135deg, #4A15A0 0%, #E86B1A 90%);
 
   /* Bordas arredondadas */
   --radius-sm:     12px;
@@ -52,6 +62,74 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.5;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TEXTURA - LINHAS + MANCHAS ORGÂNICAS (APLICADA EM TODAS AS PÁGINAS)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Camada 1: Linhas diagonais sutis */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    /* Linhas finas roxas */
+    repeating-linear-gradient(45deg, 
+      rgba(91, 31, 176, 0.04) 0px, 
+      rgba(91, 31, 176, 0.04) 1px,
+      transparent 1px, 
+      transparent 12px),
+    /* Linhas finas laranjas */
+    repeating-linear-gradient(-45deg, 
+      rgba(232, 107, 26, 0.03) 0px, 
+      rgba(232, 107, 26, 0.03) 1px,
+      transparent 1px, 
+      transparent 16px),
+    /* Linhas verticais sutis */
+    repeating-linear-gradient(90deg,
+      rgba(91, 31, 176, 0.02) 0px,
+      rgba(91, 31, 176, 0.02) 1px,
+      transparent 1px,
+      transparent 40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Camada 2: Manchas orgânicas coloridas */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: 
+    /* Mancha roxa - superior esquerda (grande) */
+    radial-gradient(ellipse 70% 50% at 5% 5%, 
+      rgba(91, 31, 176, 0.12) 0%, 
+      rgba(91, 31, 176, 0.04) 40%,
+      transparent 65%),
+    /* Mancha laranja - inferior direita */
+    radial-gradient(ellipse 60% 45% at 95% 95%, 
+      rgba(232, 107, 26, 0.10) 0%, 
+      transparent 60%),
+    /* Mancha roxa - centro-direita */
+    radial-gradient(circle 500px at 70% 30%, 
+      rgba(91, 31, 176, 0.06) 0%, 
+      transparent 55%),
+    /* Mancha laranja - canto superior direito */
+    radial-gradient(circle 350px at 85% 15%, 
+      rgba(232, 107, 26, 0.06) 0%, 
+      transparent 55%),
+    /* Mancha roxa - inferior esquerda */
+    radial-gradient(ellipse 50% 40% at 20% 80%, 
+      rgba(123, 63, 208, 0.05) 0%, 
+      transparent 60%),
+    /* Mancha central sutil */
+    radial-gradient(ellipse 40% 30% at 50% 50%, 
+      rgba(155, 107, 223, 0.04) 0%, 
+      transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ===== LAYOUT ===== */
@@ -69,13 +147,41 @@ h1, h2, h3, h4 {
   letter-spacing: normal;
   font-weight: 700;
   line-height: 1.2;
+  color: var(--text);
 }
 
 .grad {
-  background: linear-gradient(120deg, #9B5CFF 0%, #FF7E2B 90%);
+  background: var(--grad-text);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Textos com cor roxa - agora com contraste adequado */
+.text-purple {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.text-orange {
+  color: var(--orange-dark);
+  font-weight: 600;
+}
+
+/* ===== TRANSIÇÕES ENTRE PÁGINAS ===== */
+.container {
+  animation: pageEnter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== ANIMAÇÕES GLOBAIS ===== */
@@ -100,4 +206,44 @@ h1, h2, h3, h4 {
 
 @keyframes fadeIn {
   to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== SCROLLBAR ESTILIZADA ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(91, 31, 176, 0.08);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(91, 31, 176, 0.30);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(91, 31, 176, 0.45);
 }
