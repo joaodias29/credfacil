@@ -1,19 +1,7 @@
 /* ============================================================
-   CREDFÁCIL — HOME (index.html)
+   CREDFÁCIL — HOME (index.html) - TEMA STONE CLARO
    Estilos exclusivos da página inicial
    ============================================================ */
-
-/* ===== FUNDO AMBIENTE ===== */
-.bg-ambient {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(ellipse 55% 45% at 10% 15%, rgba(108,43,255,0.20) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 35% at 90% 80%, rgba(255,126,43,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse 30% 30% at 60% 40%, rgba(155,92,255,0.08) 0%, transparent 50%);
-}
 
 /* ===== HERO ===== */
 .hero {
@@ -30,9 +18,9 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: var(--purple-soft);
-  border: 1px solid rgba(108,43,255,0.20);
-  color: var(--purple-mid);
+  background: rgba(108, 43, 255, 0.10);
+  border: 1px solid rgba(108, 43, 255, 0.20);
+  color: var(--purple);
   padding: 6px 14px;
   border-radius: 50px;
   font-size: 0.78rem;
@@ -49,6 +37,7 @@
   line-height: 1.1;
   letter-spacing: -0.03em;
   margin-bottom: 20px;
+  color: var(--text);
 }
 
 .hero-sub {
@@ -79,7 +68,7 @@
   font-size: 0.85rem;
   color: var(--text-muted);
 }
-.hero-stat i { color: var(--purple-mid); }
+.hero-stat i { color: var(--purple); }
 
 /* ===== PHONE MOCKUP ===== */
 .phone-wrap {
